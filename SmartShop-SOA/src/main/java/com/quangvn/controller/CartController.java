@@ -8,13 +8,11 @@ package com.quangvn.controller;
 import com.quangvn.beans.Account;
 import com.quangvn.beans.Bill;
 import com.quangvn.beans.ProductCart;
-import com.quangvn.factory.CartService;
+import com.quangvn.service.CartService;
 import com.quangvn.service.BillService;
-import com.quangvn.service.ProductCartService;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,10 +38,7 @@ public class CartController {
     }
 
     @RequestMapping(value = "/addtocart", method = RequestMethod.POST)
-    public String addProductToCart(HttpServletRequest req, HttpSession session) {
-        String id = req.getParameter("id");
-        String number = req.getParameter("number");
-
+    public String addProductToCart(String id, String number, HttpSession session) {
         Account account = (Account) session.getAttribute("user");
         Bill bill = BillService.getInstance().checkBillExist(account);
         if (bill != null) {
@@ -59,7 +54,7 @@ public class CartController {
             CartService.getInstance().addProductToCart(Integer.parseInt(id), Integer.parseInt(number), account);
         }
 
-        List<ProductCart> list = ProductCartService.getInstance().getListProductCart(account);
+        List<ProductCart> list = CartService.getInstance().getListProductCart(account);
         int numberProductCart = 0;
         if (!list.isEmpty()) {
             for (ProductCart productCart : list) {
@@ -69,6 +64,12 @@ public class CartController {
         session.setAttribute("productcart", list);
         session.setAttribute("numberproductcart", numberProductCart);
         return "cart/cart";
+    }
+    
+    @RequestMapping(value = "/deleteproductcart", method = RequestMethod.POST)
+    public String deleteProductCart(String id){
+        
+        return "redirect:cart";
     }
 
 }

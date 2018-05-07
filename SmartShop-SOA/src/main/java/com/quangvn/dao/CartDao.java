@@ -6,10 +6,15 @@
 package com.quangvn.dao;
 
 import com.quangvn.beans.Account;
+import com.quangvn.beans.ProductCart;
+import static com.quangvn.dao.BaseDao.getConnect;
+import com.quangvn.factory.ProductCartFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,6 +32,33 @@ public class CartDao extends BaseDao {
     private static class CartDaoHolder {
 
         private static final CartDao INSTANCE = new CartDao();
+    }
+    
+    public List<ProductCart> getListProductCart(Account account) {
+        List<ProductCart> list = new ArrayList<>();
+        Connection conn = getConnect();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * \n"
+                    + "FROM product\n"
+                    + "INNER JOIN cart\n"
+                    + "ON cart.ID_PRODUCT = product.ID\n"
+                    + "INNER JOIN bill\n"
+                    + "ON bill.ID = cart.ID_BILL\n"
+                    + "WHERE bill.USERNAME=?");
+            ps.setString(1, account.getUsername());
+            ResultSet rs = ps.executeQuery();
+            ProductCart entity;
+            while (rs.next()) {
+                entity = ProductCartFactory.createProductCart(rs);
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error to get product in cart: " + e.getMessage());
+            list = null;
+        } finally {
+            closeConnection(conn);
+        }
+        return list;
     }
 
     public void addProductToCart(int idProduct, int number, Account account) {

@@ -8,7 +8,7 @@ package com.quangvn.controller;
 import com.quangvn.beans.Account;
 import com.quangvn.beans.Product;
 import com.quangvn.beans.ProductCart;
-import com.quangvn.service.ProductCartService;
+import com.quangvn.service.CartService;
 import com.quangvn.service.ProductService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -39,7 +39,7 @@ public class IndexController {
 
         Account account = (Account) session.getAttribute("user");
         if (account != null) {
-            List<ProductCart> list = ProductCartService.getInstance().getListProductCart(account);
+            List<ProductCart> list = CartService.getInstance().getListProductCart(account);
             int numberProductCart = 0;
             if (!list.isEmpty()) {
                 for (ProductCart productCart : list) {
