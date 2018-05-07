@@ -77,27 +77,30 @@ public class ProductDao extends BaseDao {
         return entity;
     }
 
-//    public List<AbstractProduct> getProductByName(String key) {
-//        Connection conn = getConnect();
-//        List<AbstractProduct> list = new ArrayList<>();
-//        Product entity;
-//        try {
-//            CallableStatement cs = conn.prepareCall("CALL " + SCHEMA_NAME + ".getProductByName(?)");
-//            cs.setString(1, key);
-//            ResultSet rs = cs.executeQuery();
-//            while (rs.next()) {
-//                entity = ProductFactory.createProduct(rs);
-//                list.add(entity);
-//            }
-//            return list;
-//        } catch (Exception e) {
-//            System.out.println("Error to get product by name: " + e.getMessage());
-//        } finally {
-//            closeConnection(conn);
-//        }
-//        return new ArrayList<AbstractProduct>((Collection<? extends AbstractProduct>) new NullProduct());
-//    }
-//
+    public List<Product> getProductByName(String name) {
+        Connection con = getConnect();
+        List<Product> list = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareCall("SELECT * \n"
+                    + "FROM product\n"
+                    + "WHERE NAME LIKE ?"
+                    + "ORDER BY PRICE ASC");
+            ps.setString(1, "%" + name + "%");
+            ResultSet rs = ps.executeQuery();
+            Product entity;
+            while (rs.next()) {
+                entity = ProductFactory.createProduct(rs);
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error to get product by name index: " + e.getMessage());
+            list = null;
+        } finally {
+            closeConnection(con);
+        }
+        return list;
+    }
+
     public List<Product> getListProduct() {
         List<Product> list = new ArrayList<>();
         Connection conn = getConnect();

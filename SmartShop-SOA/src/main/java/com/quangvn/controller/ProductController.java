@@ -9,6 +9,7 @@ import com.quangvn.beans.Product;
 import com.quangvn.service.ProductService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +28,19 @@ public class ProductController {
         model.addAttribute("listProduct", listProduct);
         return "product/listproduct";
     }
-    
+
     @RequestMapping(value = "/productdetail", method = RequestMethod.GET)
-    public String getProductDetail(Model model, HttpServletRequest req){
+    public String getProductDetail(Model model, HttpServletRequest req) {
         String idProduct = req.getParameter("id");
         Product product = ProductService.getInstance().getProductById(Integer.parseInt(idProduct));
         model.addAttribute("product", product);
         return "product/productdetail";
+    }
+
+    @RequestMapping(value = "/searchproduct", method = RequestMethod.GET)
+    public String searchProduct(String key, Model model) {
+        List<Product> listProduct = ProductService.getInstance().getProductByName(key);
+        model.addAttribute("listProduct", listProduct);
+        return "product/listproduct";
     }
 }

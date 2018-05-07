@@ -106,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <form class="form-search" action="searchproduct" method="POST">
+                    <form class="form-search" action="searchproduct" method="GET">
                         <input type="text" class="input-text" name="key" id="search" placeholder="Tìm kiếm sản phẩm...">
                         <button type="submit" class="btn btn-danger1"><span class="fa fa-search"></span></button>
                     </form>

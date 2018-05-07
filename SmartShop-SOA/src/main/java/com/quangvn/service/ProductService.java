@@ -38,4 +38,8 @@ public class ProductService {
     public Product getProductById(int id){
         return ProductDao.getInstance().getProductById(id);
     }
+    
+    public List<Product> getProductByName(String name){
+        return ProductDao.getInstance().getProductByName(name);
+    }
 }
