@@ -33,7 +33,7 @@ public class CartDao extends BaseDao {
 
         private static final CartDao INSTANCE = new CartDao();
     }
-    
+
     public List<ProductCart> getListProductCart(Account account) {
         List<ProductCart> list = new ArrayList<>();
         Connection conn = getConnect();
@@ -118,6 +118,23 @@ public class CartDao extends BaseDao {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error to update number product in cart: " + e.getMessage());
+        } finally {
+            closeConnection(conn);
+        }
+    }
+
+    public void deleteProductInCart(int idProduct, Account account) {
+        Connection conn = getConnect();
+        try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM cart\n"
+                    + "WHERE ID_PRODUCT=?\n"
+                    + "AND ID_BILL = (SELECT ID FROM bill WHERE USERNAME=? AND STATUS=?)");
+            ps.setInt(1, idProduct);
+            ps.setString(2, account.getUsername());
+            ps.setInt(3, 0);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error to delete product in cart: " + e.getMessage());
         } finally {
             closeConnection(conn);
         }

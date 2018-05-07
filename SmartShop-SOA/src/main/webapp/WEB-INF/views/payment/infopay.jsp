@@ -32,7 +32,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9-offset-3">
-                            <form action="pay" method="POST">
+                            <form id="CreateOrder" action="pay" method="POST">
                                 <div class="row">
                                     <br><br>
                                     <div class="col-md-5">
@@ -42,53 +42,53 @@
                                     </div>
                                     <div class="col-md-7">
                                         <input type="text" name="fullname" value="${user.fullname}" class="input-text add-product" readonly>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="add-title">
-                                            <div>Email:</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <input type="text" name="email" value="${user.email}" class="input-text add-product" readonly>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="add-title">
-                                            <div>Số điện thoại:</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <input type="text" name="tel" value="${user.phone}" class="input-text add-product" readonly>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="add-title">
-                                            <div>Khung giờ nhận hàng:</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <select class="input-text add-product" name="time">
-                                            <option value="1">Trong giờ hành chính</option>
-                                            <option value="0">Ngoài giờ hành chính</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="add-title">
-                                            <div>Địa chỉ nhận hàng: </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <input type="text" name="address" class="input-text add-product">
-                                    </div>
-                                    <div class="col-md-7 col-offset-5">
-                                        <button type="submit" class="btn add-btn">Thanh toán</button>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="add-title">
+                                        <div>Email:</div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-md-7">
+                                    <input type="text" name="email" value="${user.email}" class="input-text add-product" readonly>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="add-title">
+                                        <div>Số điện thoại:</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" name="tel" value="${user.phone}" class="input-text add-product" readonly>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="add-title">
+                                        <div>Khung giờ nhận hàng:</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="input-text add-product" name="time">
+                                        <option value="1">Trong giờ hành chính</option>
+                                        <option value="0">Ngoài giờ hành chính</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="add-title">
+                                        <div>Địa chỉ nhận hàng: </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" name="address" class="input-text add-product">
+                                </div>
+                                <div class="col-md-7 col-offset-5">
+                                    <input type="submit" class="btn add-btn" value="Thanh toán">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div> <!--End Content-->
+            </div>
+        </div> <!--End Content-->
 
-         <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer bot-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer bot-->
 
         <script type="text/javascript">
             $(function () {

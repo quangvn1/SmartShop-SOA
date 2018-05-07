@@ -92,7 +92,7 @@
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <a href="deleteincart?id=${list.product.id}" class="fa fa-trash-o btn-remove"></a>
+                                                    <a href="deleteproductcart?id=${list.product.id}" class="fa fa-trash-o btn-remove"></a>
                                                 </div>
                                             </td>
                                         </tr>

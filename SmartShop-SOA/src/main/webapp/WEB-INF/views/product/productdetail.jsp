@@ -65,7 +65,7 @@
                                     <div class="desc std">
                                         ${product.des}
                                     </div>
-                                    <form action="addtocart" method="POST" class="form-horizontal">
+                                    <form action="addtocart" method="GET" class="form-horizontal">
                                         <div class="form-group" style="margin-left: 0px;">
                                             <input type="text" value="${product.id}" class="hidden" name="id">
                                             <label class="col-md-2 col-sm-3 control-label">Số lượng:</label>

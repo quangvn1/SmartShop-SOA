@@ -37,7 +37,7 @@ public class CartController {
         return "cart/cart";
     }
 
-    @RequestMapping(value = "/addtocart", method = RequestMethod.POST)
+    @RequestMapping(value = "/addtocart", method = RequestMethod.GET)
     public String addProductToCart(String id, String number, HttpSession session) {
         Account account = (Account) session.getAttribute("user");
         Bill bill = BillService.getInstance().checkBillExist(account);
@@ -63,12 +63,23 @@ public class CartController {
         }
         session.setAttribute("productcart", list);
         session.setAttribute("numberproductcart", numberProductCart);
-        return "cart/cart";
+        return "redirect:cart";
     }
-    
+
     @RequestMapping(value = "/deleteproductcart", method = RequestMethod.POST)
-    public String deleteProductCart(String id){
-        
+    public String deleteProductCart(String id, HttpSession session) {
+        Account account = (Account) session.getAttribute("user");
+        CartService.getInstance().deleteProductInCart(Integer.parseInt(id), account);
+
+        List<ProductCart> list = CartService.getInstance().getListProductCart(account);
+        int numberProductCart = 0;
+        if (!list.isEmpty()) {
+            for (ProductCart productCart : list) {
+                numberProductCart += productCart.getAmount();
+            }
+        }
+        session.setAttribute("productcart", list);
+        session.setAttribute("numberproductcart", numberProductCart);
         return "redirect:cart";
     }
 

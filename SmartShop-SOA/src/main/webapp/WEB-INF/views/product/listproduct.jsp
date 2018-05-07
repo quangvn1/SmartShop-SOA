@@ -140,7 +140,7 @@
                                                             <li><a href="#" class="favorite">Quan tâm</a></li>
                                                             <li><a href="#" class="compare">So sánh</a></li>
                                                                 <c:if test="${user!=null}">
-                                                                <li><a href="addtocart?id=${product.id}" class="addtocart">Mua ngay</a></li>
+                                                                <li><a href="addtocart?id=${product.id}&number=1" class="addtocart">Mua ngay</a></li>
                                                                 </c:if>
                                                         </ul>
                                                     </div>

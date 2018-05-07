@@ -43,4 +43,8 @@ public class CartService {
     public void updateNumBerProductInCart(int idProduct, int number, Account account){
         CartDao.getInstance().updateNumBerProductInCart(idProduct, number, account);
     }
+    
+    public void deleteProductInCart(int idProduct, Account account){
+        CartDao.getInstance().deleteProductInCart(idProduct, account);
+    }
 }
