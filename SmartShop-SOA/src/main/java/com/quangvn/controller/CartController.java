@@ -33,6 +33,9 @@ public class CartController {
         for (ProductCart productCart : list) {
             amount += productCart.getAmount() * productCart.getProduct().getPrice();
         }
+        if(list.isEmpty()){
+            model.addAttribute("msg", "Quý khách chưa có sản phẩm nào trong giỏ hàng");
+        }
         model.addAttribute("amount", amount);
         return "cart/cart";
     }
@@ -66,7 +69,7 @@ public class CartController {
         return "redirect:cart";
     }
 
-    @RequestMapping(value = "/deleteproductcart", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteproductcart", method = RequestMethod.GET)
     public String deleteProductCart(String id, HttpSession session) {
         Account account = (Account) session.getAttribute("user");
         CartService.getInstance().deleteProductInCart(Integer.parseInt(id), account);
