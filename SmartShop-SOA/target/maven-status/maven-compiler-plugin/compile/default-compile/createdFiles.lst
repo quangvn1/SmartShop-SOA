@@ -17,13 +17,13 @@ com\quangvn\factory\CartService$CartServiceHolder.class
 com\quangvn\service\ProductService.class
 com\quangvn\dao\CartDao$CartDaoHolder.class
 com\quangvn\service\CartService.class
+com\quangvn\utils\VerifyUtils.class
 com\quangvn\controller\PaymentController.class
 com\quangvn\dao\CartDao$1.class
 com\quangvn\controller\ProductController.class
 com\quangvn\dao\ProductDao$1.class
 com\quangvn\dao\BillDao.class
 com\quangvn\factory\CartService.class
-com\quangvn\utils\RestUtils.class
 com\quangvn\dao\AccountDao$1.class
 com\quangvn\dao\AccountDao.class
 com\quangvn\dao\BaseDao.class
@@ -39,4 +39,5 @@ com\quangvn\dao\ProductDao$ProductDaoHolder.class
 com\quangvn\controller\IndexController.class
 com\quangvn\dao\CartDao.class
 com\quangvn\factory\ProductCartFactory.class
+com\quangvn\beans\RecaptchaRs.class
 com\quangvn\dao\AccountDao$ProductDaoHolder.class

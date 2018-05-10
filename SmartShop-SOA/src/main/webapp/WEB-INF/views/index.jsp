@@ -292,6 +292,13 @@
                     });
                 </script>
             </c:when>
+            <c:when test='${resultLogin.equals("captcha valid")}'>
+                <script type="text/javascript">
+                    $(function () {
+                        alert("captcha invalid");
+                    });
+                </script>
+            </c:when>
         </c:choose>
         <% session.removeAttribute("resultLogin");%>
     </body>
