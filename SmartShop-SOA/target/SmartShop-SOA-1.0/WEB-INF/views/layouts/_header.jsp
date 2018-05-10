@@ -345,7 +345,7 @@
                     <ul class="menu clearfix">
                         <li><a href="/SmartShop-SOA/">Trang chủ</a></li>
                         <li><a href="listproduct">Sản phẩm</a></li>
-                        <li><a href="addproduct">Khuyến mại</a></li>
+                        <li><a href="addproduct">Thêm ảnh sản phẩm</a></li>
                         <li><a href="#">Trả góp</a></li>
                         <li><a href="#">Dịch vụ</a></li>
                         <li><a href="news">Tin tức</a></li>

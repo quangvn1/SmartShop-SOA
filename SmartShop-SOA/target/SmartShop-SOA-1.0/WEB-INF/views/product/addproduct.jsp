@@ -32,10 +32,10 @@
         <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include> <!--Header-->
             <!--        <img src="https://i.imgur.com/addM6tx.jpg" style="display: block" height="200" id="uploadImage"/>
                     <input type="file" onchange="showImage.call(this)"/>-->
-            <div class="title">
+<!--            <div class="title">
                 <h1>Imgur Upload API</h1>
                 <p>Use JavaScript To Upload Image</p>
-            </div>
+            </div>-->
             <div class="dropzone">
                 <div class="info"></div>
             </div>
