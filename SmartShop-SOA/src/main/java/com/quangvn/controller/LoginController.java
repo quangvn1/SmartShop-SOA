@@ -21,14 +21,13 @@ public class LoginController {
 
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
     public String checkUser(HttpSession session, Account account) {
+        System.out.println(""+account.getUsername() + " - " + account.getPassword());
         Account entity = AccountService.getInstance().checkAccount(account);
         if (entity != null) {
             session.setAttribute("user", entity);
             String[] _split_name = entity.getFullname().split(" ");
             session.setAttribute("fullname", _split_name[_split_name.length - 1]);
             session.setAttribute("resultLogin", "success");
-            
-            
         } else {
             session.setAttribute("resultLogin", "fail");
         }

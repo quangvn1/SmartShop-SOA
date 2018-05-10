@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="319184242978-aonf45qpm41hrbeh9am7poeo6n3e2po6.apps.googleusercontent.com">
 <div class="header">
     <div class="topbar">
         <div class="container">
@@ -14,6 +16,7 @@
                 <c:when test="${user==null}">
                     <div class="topbar-right">
                         <ul class="topbar-nav clearfix">
+                            <li><div class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignInFailure"></div></li>
                             <li data-toggle="modal" data-target="#myModal"><a href="#" class="login">Đăng nhập</a></li>
                             <li><a href="/smartshop-soa/registration" class="registration">Đăng ký</a></li>
                         </ul>
@@ -342,7 +345,7 @@
                     <ul class="menu clearfix">
                         <li><a href="/SmartShop-SOA/">Trang chủ</a></li>
                         <li><a href="listproduct">Sản phẩm</a></li>
-                        <li><a href="#">Khuyến mại</a></li>
+                        <li><a href="addproduct">Khuyến mại</a></li>
                         <li><a href="#">Trả góp</a></li>
                         <li><a href="#">Dịch vụ</a></li>
                         <li><a href="news">Tin tức</a></li>

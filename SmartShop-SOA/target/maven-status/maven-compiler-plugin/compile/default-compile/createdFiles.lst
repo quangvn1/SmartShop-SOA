@@ -1,4 +1,5 @@
 com\quangvn\dao\ProductDao.class
+com\quangvn\controller\AddProductController.class
 com\quangvn\service\CartService$1.class
 com\quangvn\factory\ProductFactory.class
 com\quangvn\service\AccountService.class
